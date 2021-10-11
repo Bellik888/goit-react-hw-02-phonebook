@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import shortid from 'shortid';
-
 export class ContactForm extends Component {
   inputNameID = shortid();
   inputNumberID = shortid();
@@ -36,26 +35,34 @@ export class ContactForm extends Component {
   };
 
   render() {
+    let {
+      handleSubmit,
+      inputNameID,
+      inputNumberID,
+      handleChangeName,
+      handleChangeNumber,
+    } = this;
+    let { name, number } = this.state;
     return (
       <section>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor={this.inputNameID}>Names</label>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor={inputNameID}>Names</label>
           <input
-            id={this.inputNameID}
-            name={this.state.name}
+            id={inputNameID}
+            name={name}
             type="text"
-            value={this.state.name}
-            onChange={this.handleChangeName}
+            value={name}
+            onChange={handleChangeName}
           ></input>
 
-          <label htmlFor={this.inputNumberID}>Number</label>
+          <label htmlFor={inputNumberID}>Number</label>
           <input
-            id={this.inputNumberID}
-            name={this.state.number}
+            id={inputNumberID}
+            name={number}
             type="text"
-            value={this.state.number}
-            placeholder="012-34-56"
-            onChange={this.handleChangeNumber}
+            value={number}
+            placeholder="XXX-XX-XX"
+            onChange={handleChangeNumber}
           ></input>
 
           <button type="submit">Add contact</button>

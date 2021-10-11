@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const ContactListItem = ({ filter, contacts, deleteItem }) => {
   return (
     <li>
@@ -27,4 +29,10 @@ export const ContactListItem = ({ filter, contacts, deleteItem }) => {
           )}
     </li>
   );
+};
+
+ContactListItem.propTypes = {
+  filter: PropTypes.string,
+  contacts: PropTypes.array,
+  deleteItem: PropTypes.func,
 };

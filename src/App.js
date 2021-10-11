@@ -43,25 +43,25 @@ class App extends Component {
   };
 
   render() {
+    let { addNewContact, searchDuplicate, handleChangeFilter, deleteItem } =
+      this;
+    let { contacts, filter } = this.state;
     return (
       <div className="App">
         <h1>Phonebook</h1>
         <ContactForm
-          addNewContact={this.addNewContact}
-          searchDuplicate={this.searchDuplicate}
-          contacts={this.state.contacts}
+          addNewContact={addNewContact}
+          searchDuplicate={searchDuplicate}
+          contacts={contacts}
         />
 
         <h2>Contacts</h2>
-        <Filter
-          filter={this.state.filter}
-          handleChangeFilter={this.handleChangeFilter}
-        />
+        <Filter filter={filter} handleChangeFilter={handleChangeFilter} />
         <ContactList>
           <ContactListItem
-            contacts={this.state.contacts}
-            filter={this.state.filter}
-            deleteItem={this.deleteItem}
+            contacts={contacts}
+            filter={filter}
+            deleteItem={deleteItem}
           />
         </ContactList>
       </div>
