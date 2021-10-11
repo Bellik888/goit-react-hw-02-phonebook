@@ -3,6 +3,7 @@ import './App.css';
 import { Filter } from './components/Filter/Filter';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import { ContactList } from './components/ContactList/ContactList';
+import { ContactListItem } from './components/ContactListItem/ContactListItem';
 
 class App extends Component {
   state = {
@@ -28,10 +29,17 @@ class App extends Component {
       contact =>
         value === contact.name && alert(`${value} is already in contacts!!!`),
     );
+    return true;
   };
 
   handleChangeFilter = e => {
     this.setState({ filter: e.target.value });
+  };
+
+  deleteItem = itemId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(item => item.id !== itemId),
+    }));
   };
 
   render() {
@@ -49,10 +57,13 @@ class App extends Component {
           filter={this.state.filter}
           handleChangeFilter={this.handleChangeFilter}
         />
-        <ContactList
-          contacts={this.state.contacts}
-          filter={this.state.filter}
-        />
+        <ContactList>
+          <ContactListItem
+            contacts={this.state.contacts}
+            filter={this.state.filter}
+            deleteItem={this.deleteItem}
+          />
+        </ContactList>
       </div>
     );
   }

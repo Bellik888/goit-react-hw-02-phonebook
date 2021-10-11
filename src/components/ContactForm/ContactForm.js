@@ -30,9 +30,6 @@ export class ContactForm extends Component {
       this.setState({ contact });
       this.props.searchDuplicate(this.state.name);
       this.props.addNewContact(contact);
-      // if (!alert) {
-      //     this.props.addNewContact(contact);
-      // }
       this.setState({ name: '', number: '' });
     }
     return;
