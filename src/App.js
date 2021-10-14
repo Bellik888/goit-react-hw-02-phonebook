@@ -25,11 +25,10 @@ class App extends Component {
   };
 
   searchDuplicate = value => {
-    this.state.contacts.map(
-      contact =>
-        value === contact.name && alert(`${value} is already in contacts!!!`),
-    );
-    return true;
+    const names = this.state.contacts.map(contact => contact.name);
+    names.includes(value.name)
+      ? alert(`${value.name} is already in contacts!!!`)
+      : this.addNewContact(value);
   };
 
   handleChangeFilter = e => {

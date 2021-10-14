@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 
 export const ContactListItem = ({ filter, contacts, deleteItem }) => {
   return (
-    <li>
+    <>
       {filter === ''
         ? contacts.map(({ name, number, id }) => (
-            <li>
+            <li key={id}>
               <p>
                 {name} : {number}
               </p>
@@ -17,7 +17,7 @@ export const ContactListItem = ({ filter, contacts, deleteItem }) => {
         : contacts.map(
             ({ name, number, id }) =>
               name.toLowerCase().includes(filter.toLowerCase()) && (
-                <li>
+                <li key={id}>
                   <p>
                     {name} : {number}
                   </p>
@@ -27,7 +27,7 @@ export const ContactListItem = ({ filter, contacts, deleteItem }) => {
                 </li>
               ),
           )}
-    </li>
+    </>
   );
 };
 

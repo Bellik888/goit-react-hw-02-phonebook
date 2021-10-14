@@ -25,10 +25,10 @@ export class ContactForm extends Component {
       number: this.state.number,
     };
 
-    if (this.state.name) {
+    if (this.state.name && this.state.number) {
       this.setState({ contact });
-      this.props.searchDuplicate(this.state.name);
-      this.props.addNewContact(contact);
+      this.props.searchDuplicate(contact);
+      // this.props.addNewContact(contact);
       this.setState({ name: '', number: '' });
     }
     return;
@@ -51,6 +51,8 @@ export class ContactForm extends Component {
             id={inputNameID}
             name={name}
             type="text"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Ім'я включає букви, при потребі : апостроф, тире і пробіли"
             value={name}
             onChange={handleChangeName}
           ></input>
@@ -59,7 +61,9 @@ export class ContactForm extends Component {
           <input
             id={inputNumberID}
             name={number}
-            type="text"
+            type="tel"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            tittle="обов'язково цифри! при потребі '+' , '-', '()'"
             value={number}
             placeholder="XXX-XX-XX"
             onChange={handleChangeNumber}

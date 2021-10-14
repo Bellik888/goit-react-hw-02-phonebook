@@ -1,7 +1,9 @@
 export const ContactList = ({ children }) => {
   return (
-    <section>
-      <ul>{children}</ul>
-    </section>
+    { children } && (
+      <section>
+        <ul>{children}</ul>
+      </section>
+    )
   );
 };
